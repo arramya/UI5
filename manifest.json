@@ -1,0 +1,156 @@
+{
+	"_version": "1.9.0",
+	"sap.app": {
+		"id": "so_overview",
+		"type": "application", 
+		"i18n": "i18n/i18n.properties",
+		"title": "SO overview",
+		"description": "Sales order overview",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		
+	
+		"dataSources": {
+			"mainService": {
+				"uri": "proxy/http/DB41VV12.mobolutions.com:8001/sap/opu/odata/sap/ZHCP_SALESORDER_APP_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			}
+		},
+		"sourceTemplate": {
+			"id": "sap.ui.ui5-template-plugin.2masterdetail",
+			"version": "1.52.6"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "sap-icon://detail-view",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "so_overview.views.postjob",
+			"type": "XML",
+			"async": true,
+			"id": "app"
+		} ,
+		"dependencies": {
+			"minUI5Version": "1.42.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.ushell": {},
+				"sap.collaboration": {
+					"lazy": true
+				}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+		
+			"i18n": {
+"type": "sap.ui.model.resource.ResourceModel",
+"settings": {
+"bundleName": "so_overview.i18n.i18n"
+}
+},
+		
+			
+			"": {
+				"dataSource": "mainService",
+				"preload": true
+			}
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "so_overview.views",
+				"controlId": "appcontrol",
+				"controlAggregation": "pages",
+				"bypassed": {
+					"target": [
+						"master",
+						"notFound"
+					]
+				},
+				"async": true
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "master",
+					"target": [
+						"object",
+						"master"
+					]
+				},
+				{
+					"pattern": "SalesOrders/{objectId}",
+					"name": "object",
+					"target": [
+						"master",
+						"object"
+					]
+				},
+				{
+					"pattern": "postjob",
+					"name": "postjob",
+					"target": "postjob"
+				}
+				
+			],
+			"targets": {
+				
+				"splitview" :{
+					"viewName": "root"
+				},
+				"master": {
+					"viewName": "Master",
+					
+					"viewId": "master",
+					"controlId": "idSplitApp",
+					"parent" : "splitview",
+					"controlAggregation": "masterPages"
+					
+				},
+				"object": {
+					"viewName": "Detail",
+					"viewId": "detail",
+					"controlId": "idSplitApp",
+						"parent" : "splitview",
+					 
+					"controlAggregation": "detailPages"
+				},
+				"postjob": {
+						"viewName": "postjob",
+						"viewLevel": 1,
+						"controlAggregation": "pages"
+				}
+			}
+		}
+
+ 
+ 
+		 
+	}
+}
+ 

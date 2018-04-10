@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+<meta http-equiv='Content-Type' content='text/html;charset=UTF-8' />
+ 
+ 
+<script src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+	id="sap-ui-bootstrap" data-sap-ui-libs="sap.m"
+	data-sap-ui-theme="sap_bluecrystal"
+	data-sap-ui-xx-bindingSyntax="complex"
+	 data-sap-ui-language="zh-Hans-CN" 
+	data-sap-ui-resourceRoots='{"so_overview" : "./"}'>
+		</script>
+<!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme -->
+
+<script>
+
+var invcno,value,list_InvoiceNo,SalesOrderNumber,oRouter,oMol,Counthead;
+var iempp,trpnop,Quoto,fin_loc;
+var usr,pswd;
+ var i=1;
+var oTable,oModel7,oModel;
+var con =[];
+var name,street_data,city_data,country_data,postal_data,tablen,t1,tableid,index;
+var oBinding=[];
+
+			var oComponent = new sap.ui.core.ComponentContainer({
+				name: "so_overview"
+			});
+			
+			var oShell = new sap.m.Shell({
+				app: oComponent
+			});
+			
+			oShell.placeAt("content");
+		
+		</script>
+<link rel="stylesheet" type="text/css" href="common.css" />
+
+<style type="text/css">
+#__xmlview0--page1-cont
+{
+	background-color:#2b2a38;
+}
+</style>
+ </head>
+<body class="sapUiBody" role="application">
+	<div id="content"></div>
+</body>
+</html>
